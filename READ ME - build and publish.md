@@ -2,8 +2,10 @@
 
 A complete SwiftUI app. Tap the wooden surface and it gives a real haptic knock
 (CoreHaptics), plays a wooden knock sound, shows a ripple where you touched, and
-displays a short reassurance ("Safe.", "Warded off.", and so on). Portrait, full
-screen, works offline.
+displays a short reassurance ("Safe.", "Warded off.", and so on). It keeps a
+running count of your knocks and a daily streak, and has a settings screen for
+the sound and haptics, sharing, and resetting your count. Portrait, full screen,
+works offline. Nothing is collected and nothing leaves the device.
 
 ## What is in this folder
 - `TouchWood.xcodeproj` — open this in Xcode.
@@ -13,6 +15,8 @@ screen, works offline.
   - `Haptics.swift` — the CoreHaptics "knock" (falls back to a basic buzz on
     older devices).
   - `SoundPlayer.swift` — plays the knock sound.
+  - `Stats.swift` — the knock count and daily streak, stored on the device.
+  - `SettingsView.swift` — the settings screen (sound, haptics, share, reset).
   - `Assets.xcassets` — the wood background image and the app icon.
   - `Resources/knock.wav` — the knock sound.
 - `project.yml` — the project definition (only needed if you regenerate the
@@ -88,13 +92,14 @@ takes a day or two.
 
 ## One honest warning about App Review
 A very simple novelty app can be rejected under Apple's guidelines on minimum
-functionality and "spam" (guidelines 4.2 and 4.3). To reduce that risk it is
-worth adding a little more before you submit, for example:
-- a running count of how many times you have touched wood, and a daily streak,
-- a share button, or a settings screen (sound on/off, choice of wood),
-- a Home Screen widget or a Shortcuts action.
-I can add any of these quickly. The current app is complete and will run, but if
-the goal is to get through review, a bit more substance helps.
+functionality and "spam" (guidelines 4.2 and 4.3). To reduce that risk the app
+now has a running knock count, a daily streak, a settings screen (sound and
+haptics toggles, reset) and a share button.
+
+That is a reasonable case, but it is not a guarantee. If review does push back
+on 4.2, the next thing to add is a Home Screen widget showing the streak, or a
+Shortcuts action. Both need a second target and an App Group, so they are worth
+doing only if you actually need them.
 
 ## If you change the bundle identifier or add files
 Either do it directly in Xcode, or edit `project.yml` and regenerate with
