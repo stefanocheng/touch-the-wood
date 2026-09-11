@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 
 /// Persisted lifetime knock count and consecutive-day streak.
