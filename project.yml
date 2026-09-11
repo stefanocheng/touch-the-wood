@@ -1,0 +1,34 @@
+name: TouchWood
+options:
+  bundleIdPrefix: com.stefanocheng
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+targets:
+  TouchWood:
+    type: application
+    platform: iOS
+    sources:
+      - path: TouchWood
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.stefanocheng.touchwood
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: "YES"
+        INFOPLIST_KEY_CFBundleDisplayName: "Touch Wood"
+        INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
+        INFOPLIST_KEY_UIStatusBarHidden: "YES"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: "NO"
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+        ENABLE_PREVIEWS: "YES"
+schemes:
+  TouchWood:
+    build:
+      targets:
+        TouchWood: all
+    run:
+      config: Debug
