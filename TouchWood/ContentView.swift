@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 private struct Ripple: Identifiable {
     let id = UUID()
@@ -127,7 +128,16 @@ struct ContentView: View {
             .accessibilityLabel("Settings")
         }
         .padding(.horizontal, 22)
-        .padding(.top, 8)
+        // The whole view ignores the safe area so the wood runs edge to edge,
+        // so the bar has to clear the notch or Dynamic Island by itself.
+        .padding(.top, topSafeInset + 4)
+    }
+
+    /// Top safe-area inset of the active window. Portrait-only, so this is stable.
+    private var topSafeInset: CGFloat {
+        let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+        let scene = scenes.first { $0.activationState == .foregroundActive } ?? scenes.first
+        return scene?.keyWindow?.safeAreaInsets.top ?? 20
     }
 
     private var knockLabel: String {
