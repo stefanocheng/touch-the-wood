@@ -88,7 +88,11 @@ struct ContentView: View {
             .accessibilityAction {
                 knock(at: CGPoint(x: geo.size.width / 2, y: geo.size.height / 2))
             }
-            .overlay(alignment: .top) { topBar }
+            .overlay(alignment: .top) {
+                TopBar(stats: stats, cream: cream, topInset: topSafeInset) {
+                    showSettings = true
+                }
+            }
         }
         .ignoresSafeArea()
         .persistentSystemOverlays(.hidden)
@@ -97,55 +101,11 @@ struct ContentView: View {
         }
     }
 
-    private var topBar: some View {
-        HStack(alignment: .top) {
-            VStack(alignment: .leading, spacing: 1) {
-                Text(knockLabel)
-                    .font(.system(size: 14, weight: .medium, design: .rounded))
-                    .foregroundStyle(cream.opacity(0.72))
-                if stats.streak > 0 {
-                    Text(streakLabel)
-                        .font(.system(size: 12, weight: .regular, design: .rounded))
-                        .foregroundStyle(cream.opacity(0.5))
-                }
-            }
-            .shadow(color: .black.opacity(0.5), radius: 6, y: 1)
-            .allowsHitTesting(false)
-            .accessibilityElement(children: .combine)
-
-            Spacer()
-
-            Button {
-                showSettings = true
-            } label: {
-                Image(systemName: "gearshape")
-                    .font(.system(size: 17, weight: .medium))
-                    .foregroundStyle(cream.opacity(0.6))
-                    .shadow(color: .black.opacity(0.5), radius: 6, y: 1)
-                    .frame(width: 44, height: 44, alignment: .topTrailing)
-                    .contentShape(Rectangle())
-            }
-            .accessibilityLabel("Settings")
-        }
-        .padding(.horizontal, 22)
-        // The whole view ignores the safe area so the wood runs edge to edge,
-        // so the bar has to clear the notch or Dynamic Island by itself.
-        .padding(.top, topSafeInset + 4)
-    }
-
     /// Top safe-area inset of the active window. Portrait-only, so this is stable.
     private var topSafeInset: CGFloat {
         let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
         let scene = scenes.first { $0.activationState == .foregroundActive } ?? scenes.first
         return scene?.keyWindow?.safeAreaInsets.top ?? 20
-    }
-
-    private var knockLabel: String {
-        stats.total == 1 ? "1 knock" : "\(stats.total.formatted()) knocks"
-    }
-
-    private var streakLabel: String {
-        stats.streak == 1 ? "1 day streak" : "\(stats.streak) day streak"
     }
 
     private func knock(at point: CGPoint) {
@@ -172,6 +132,60 @@ struct ContentView: View {
         }
 
         if showHint { withAnimation(.easeOut(duration: 0.5)) { showHint = false } }
+    }
+}
+
+/// The count, streak and settings button.
+///
+/// This observes Stats itself rather than reading it through the parent. The
+/// parent hands it to an .overlay closure that SwiftUI does not re-evaluate on
+/// every body pass, so a plain computed property here would show a stale count.
+private struct TopBar: View {
+    @ObservedObject var stats: Stats
+    let cream: Color
+    let topInset: CGFloat
+    var onSettings: () -> Void
+
+    var body: some View {
+        HStack(alignment: .top) {
+            VStack(alignment: .leading, spacing: 1) {
+                Text(knockLabel)
+                    .font(.system(size: 14, weight: .medium, design: .rounded))
+                    .foregroundStyle(cream.opacity(0.72))
+                if stats.streak > 0 {
+                    Text(streakLabel)
+                        .font(.system(size: 12, weight: .regular, design: .rounded))
+                        .foregroundStyle(cream.opacity(0.5))
+                }
+            }
+            .shadow(color: .black.opacity(0.5), radius: 6, y: 1)
+            .allowsHitTesting(false)
+            .accessibilityElement(children: .combine)
+
+            Spacer()
+
+            Button(action: onSettings) {
+                Image(systemName: "gearshape")
+                    .font(.system(size: 17, weight: .medium))
+                    .foregroundStyle(cream.opacity(0.6))
+                    .shadow(color: .black.opacity(0.5), radius: 6, y: 1)
+                    .frame(width: 44, height: 44, alignment: .topTrailing)
+                    .contentShape(Rectangle())
+            }
+            .accessibilityLabel("Settings")
+        }
+        .padding(.horizontal, 22)
+        // The wood runs edge to edge under the safe area, so the bar clears the
+        // notch or Dynamic Island itself.
+        .padding(.top, topInset + 4)
+    }
+
+    private var knockLabel: String {
+        stats.total == 1 ? "1 knock" : "\(stats.total.formatted()) knocks"
+    }
+
+    private var streakLabel: String {
+        stats.streak == 1 ? "1 day streak" : "\(stats.streak) day streak"
     }
 }
 
