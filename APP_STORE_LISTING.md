@@ -122,7 +122,6 @@ The cheapest durable option is GitHub Pages:
 2. Settings > Pages > Build from branch, pick your branch, folder `/ (root)`.
 3. The page appears at `https://<username>.github.io/<repo>/privacy-policy.html`.
 
-Before publishing it, replace `REPLACE_WITH_YOUR_SUPPORT_EMAIL` in
-`privacy-policy.html` with the address you want to receive support mail at.
-Consider a dedicated address rather than your personal one, since this page is
-public and gets scraped.
+Published at https://stefanocheng.github.io/touch-the-wood/privacy-policy.html
+The contact line points at the repo's GitHub issues page, so no email address is
+exposed. Use the same URL for the Support URL field.
