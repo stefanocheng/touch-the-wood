@@ -25,6 +25,7 @@ struct ContentView: View {
     @State private var showHint = true
     @State private var lastMessage = -1
     @State private var showSettings = false
+    @State private var topInset: CGFloat = 20
 
     private let cream = Color(red: 1.0, green: 0.94, blue: 0.86)
 
@@ -89,23 +90,31 @@ struct ContentView: View {
                 knock(at: CGPoint(x: geo.size.width / 2, y: geo.size.height / 2))
             }
             .overlay(alignment: .top) {
-                TopBar(stats: stats, cream: cream, topInset: topSafeInset) {
+                TopBar(stats: stats, cream: cream, topInset: topInset) {
                     showSettings = true
                 }
             }
         }
         .ignoresSafeArea()
         .persistentSystemOverlays(.hidden)
+        .onAppear(perform: readTopInset)
         .sheet(isPresented: $showSettings) {
             SettingsView(stats: stats)
         }
     }
 
-    /// Top safe-area inset of the active window. Portrait-only, so this is stable.
-    private var topSafeInset: CGFloat {
+    /// Reads the window's top safe-area inset once, on appear.
+    ///
+    /// This must not happen during body evaluation. Touching UIApplication's
+    /// window state while SwiftUI is building the view breaks its update cycle:
+    /// the subtree stops re-rendering entirely, so ripples, messages and the
+    /// hint freeze while only independently observed subviews keep updating.
+    private func readTopInset() {
         let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
         let scene = scenes.first { $0.activationState == .foregroundActive } ?? scenes.first
-        return scene?.keyWindow?.safeAreaInsets.top ?? 20
+        if let inset = scene?.keyWindow?.safeAreaInsets.top, inset > 0 {
+            topInset = inset
+        }
     }
 
     private func knock(at point: CGPoint) {
