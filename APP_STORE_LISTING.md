@@ -1,4 +1,4 @@
-# App Store listing copy — Touch Wood
+# App Store listing copy — Touch the Wood
 
 Everything App Store Connect asks you for, ready to paste. Character limits are
 Apple's; the counts in brackets are what the text below actually uses.
@@ -7,13 +7,13 @@ Apple's; the counts in brackets are what the text below actually uses.
 
 ## App Name  (limit 30)
 ```
-Touch Wood
+Touch the Wood
 ```
-[10]
+[14]
 
-The name must be unique across the entire App Store, so this exact one may be
-taken. Fallbacks that keep the search term intact:
-`Touch Wood: Knock on Wood`, `Touch Wood Knock`, `Knock on Wood: Touch Wood`.
+Confirmed and reserved in App Store Connect. "Touch Wood" was already taken,
+which is why this name has "the" in it. The Home Screen name stays the shorter
+"Touch Wood", which Apple permits as long as the two are recognisably similar.
 
 ## Subtitle  (limit 30)
 ```
@@ -39,7 +39,7 @@ Do not repeat words already in the app name; Apple indexes those separately.
 ```
 Some things you don't say out loud without knocking on wood.
 
-Touch Wood puts a piece of wood in your pocket. Tap the screen and you get a real knock: a sharp rap you feel through the phone, a wooden sound, a ripple spreading from your fingertip, and a word of reassurance.
+Touch the Wood puts a piece of wood in your pocket. Tap the screen and you get a real knock: a sharp rap you feel through the phone, a wooden sound, a ripple spreading from your fingertip, and a word of reassurance.
 
 A REAL KNOCK, NOT A BUZZ
 The haptics are built with Core Haptics as a two-part tap, a sharp strike followed by a faint second tick. It feels like wood rather than a generic vibration. On devices without a Taptic Engine the app falls back to a standard impact, so it still works.
@@ -48,7 +48,7 @@ KEEP COUNT
 Every knock is counted. Knock at least once a day and your streak grows. Miss a day and it starts again from one. Over time it becomes a quiet record of every moment you would rather not tempt fate.
 
 NOTHING LEAVES YOUR PHONE
-No account. No sign-up. No network. Your count, your streak and your settings live on your device and nowhere else. Touch Wood collects nothing, sends nothing, and works perfectly with no connection at all. Put the phone in Airplane Mode and nothing changes.
+No account. No sign-up. No network. Your count, your streak and your settings live on your device and nowhere else. Touch the Wood collects nothing, sends nothing, and works perfectly with no connection at all. Put the phone in Airplane Mode and nothing changes.
 
 SIMPLE CONTROLS
 Turn the sound off when you need to be quiet. Turn the haptics off when you want to save battery. Reset your count whenever you want a fresh start. Share your tally if the mood takes you.

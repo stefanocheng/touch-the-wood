@@ -1,4 +1,4 @@
-# Touch Wood — native iOS app
+# Touch the Wood — native iOS app
 
 A complete SwiftUI app. Tap the wooden surface and it gives a real haptic knock
 (CoreHaptics), plays a wooden knock sound, shows a ripple where you touched, and
@@ -64,7 +64,7 @@ a day or two. You need this to put the app on the App Store.
 At appstoreconnect.apple.com, sign in with the same Apple ID, go to Apps, add a
 new app:
 - Platform: iOS.
-- Name: the public App Store name (for example "Touch Wood" — it must be unique
+- Name: the public App Store name ("Touch the Wood"; it must be unique
   across the whole App Store, so you may need a small variation).
 - Bundle ID: `com.stefanocheng.touchwood` (must match the app).
 - SKU: any private code, for example `touchwood01`.

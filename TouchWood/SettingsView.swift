@@ -23,7 +23,7 @@ struct SettingsView: View {
 
                 Section {
                     ShareLink(item: shareText) {
-                        Label("Share Touch Wood", systemImage: "square.and.arrow.up")
+                        Label("Share Touch the Wood", systemImage: "square.and.arrow.up")
                     }
                 }
 
@@ -34,10 +34,10 @@ struct SettingsView: View {
                         Text("Reset count and streak")
                     }
                 } footer: {
-                    Text("Your count stays on this device. Touch Wood collects nothing and sends nothing anywhere.")
+                    Text("Your count stays on this device. Touch the Wood collects nothing and sends nothing anywhere.")
                 }
             }
-            .navigationTitle("Touch Wood")
+            .navigationTitle("Touch the Wood")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -65,8 +65,8 @@ struct SettingsView: View {
 
     private var shareText: String {
         stats.total == 0
-            ? "Touch Wood: knock on wood, wherever you are."
-            : "I've knocked on wood \(stats.total.formatted()) times. Touch Wood for iPhone."
+            ? "Touch the Wood: knock on wood, wherever you are."
+            : "I've knocked on wood \(stats.total.formatted()) times. Touch the Wood for iPhone."
     }
 }
 

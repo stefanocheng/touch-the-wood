@@ -24,7 +24,7 @@
 		CAEC9E9A5A548E9D65106ACE /* knock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = knock.wav; sourceTree = "<group>"; };
 		D8F76E1DABC28775BD231B7D /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		DA59864615121E148EA9DA41 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
-		DBA5A8F721D00577D4C9E61C /* TouchWood.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TouchWood.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBA5A8F721D00577D4C9E61C /* TouchWood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchWood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9942352F0165CAC8BEC65C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F7B43C27B3DA18181CE529BA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,8 +98,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 976A26FCB51905CA4929CD07 /* Build configuration list for PBXProject "TouchWood" */;
 			developmentRegion = en;
@@ -274,6 +272,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 399JAQ3629;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Touch Wood";
@@ -299,6 +298,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 399JAQ3629;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Touch Wood";
